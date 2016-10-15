@@ -299,6 +299,9 @@
                     <a href="notification.html">Notification</a>
                   </li>
                   <li>
+                    <a href="request.html">Requests</a>
+                </li>
+                  <li>
                     <a href="viewprofile.html">View Profile</a>
                 </li>
                   <li>
@@ -324,7 +327,7 @@ saurabh start
 
     <li><a data-toggle="tab" href="#makepayment">Make Payment</a></li>
     <li><a data-toggle="tab" href="#downloadstatement">Download Statement</a></li>
-    <li><a data-toggle="tab" href="#makepurchase">Harish tell the name</a></li>
+    <li><a data-toggle="tab" href="#makepurchase">Make Purchase</a></li>
     <!--<li><a data-toggle="tab" href="#changeUserName">Request Purchase</a></li>-->
     <li><a data-toggle="tab" href="#updatecclimit">Update Credit Limit</a></li>
   </ul>
@@ -377,7 +380,7 @@ saurabh start
 <!-- ###################################### Password tab-->
 <div id="makepurchase" class="tab-pane fade ">
   <div class="container">
-    <h1>Harish tell the name</h1>
+    <h1>Make your purchase</h1>
     <hr>
     <div class="row">
       <!-- left column -->
@@ -386,10 +389,64 @@ saurabh start
       <!-- edit form column -->
       <div class="col-md-12 personal-info">
         
-          <table id="notification">
-          <tr><th>Amount</th><th>Accept/Decline</th></tr>
-            <tr><td>Something</td><td>Button has to come here</td></tr>
-          </table> 
+
+
+      		
+          <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a> 
+            <i class="fa fa-coffee"></i>
+            <strong id="mp_cc_number">     </strong><div id="mp_cc_value">       </div>
+          </div>
+
+          <form class="form-horizontal" role="form" method="POST" onsubmit="makepayment()">
+
+
+      
+			<div class="form-group">
+		       <label class="col-lg-3 control-label">Merchant:</label>
+		              <div class="col-lg-8">
+		                <select multiple class="form-control" id="merchant">
+		        <option value="Amazon" > Amazon</option>
+		        <option value="Flipkart"  >Flipkart</option>
+		        <option value="Ebay" >Ebay</option>
+		      </select>
+		      
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Amount:</label>
+              <div class="col-lg-8">
+                <input class="form-control" id="credit_amount"  type="number">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">CVV:</label>
+              <div class="col-lg-8">
+                <input class="form-control" id="cvv"  type="password">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+
+                <input class="btn btn-primary" value="Pay" type="submit">
+                <span></span>
+                <input class="btn btn-default" value="Cancel" type="reset">
+
+              </div>
+            </div>
+
+          </form>
+
+        
+
+
+ 
 
 
         </div>
