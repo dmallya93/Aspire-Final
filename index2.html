@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Virtual Keyboard</title>
+
+	<!-- jQuery (required) & jQuery UI + theme (optional) -->
+	<link href="docs/css/jquery-ui.min.css" rel="stylesheet">
+	<!-- still using jQuery v2.2.4 because Bootstrap doesn't support v3+ -->
+	<script src="docs/js/jquery-latest.min.js"></script>
+	<script src="docs/js/jquery-ui.min.js"></script>
+	<!-- <script src="docs/js/jquery-migrate-3.0.0.min.js"></script> -->
+
+	<!-- keyboard widget css & script (required) -->
+	<link href="css/keyboard.css" rel="stylesheet">
+	<script src="js/jquery.keyboard.js"></script>
+
+	<!-- keyboard extensions (optional) -->
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/jquery.keyboard.extension-typing.js"></script>
+	<script src="js/jquery.keyboard.extension-autocomplete.js"></script>
+	<script src="js/jquery.keyboard.extension-caret.js"></script>
+
+	<!-- demo only -->
+	<link rel="stylesheet" href="docs/css/bootstrap.min.css">
+	<link rel="stylesheet" href="docs/css/font-awesome.min.css">
+	<link href="docs/css/demo.css" rel="stylesheet">
+	<link href="docs/css/tipsy.css" rel="stylesheet">
+	<link href="docs/css/prettify.css" rel="stylesheet">
+	<script src="docs/js/bootstrap.min.js"></script>
+	<script src="docs/js/demo.js"></script>
+	<script src="docs/js/jquery.tipsy.min.js"></script>
+	<script src="docs/js/prettify.js"></script> <!-- syntax highlighting -->
+</head>
+
+<body>
+
+
+	<div class="block" id="autocomplete" style="visibility: hidden">
+		<h2>
+			<span class="tooltip-tipsy" title="Click, then scroll down to see this code">QWERTY Text</span>
+		</h2>
+		<input id="text" type="text" placeholder=" Enter something...">
+		<br>
+		<small>
+			* Placeholder (watermark).<br>
+			* <a href="//github.com/Mottie/Keyboard/wiki/Setup#autocomplete">Autocomplete</a> extension.
+		</small>
+		<div class="code ui-corner-all">
+			<h4>HTML</h4>
+			<pre class="prettyprint lang-html">&lt;input id="text" type="text" placeholder=" Enter something..."&gt;</pre>
+			<h4>Script</h4>
+			<pre class="prettyprint lang-js">// Autocomplete demo
+var availableTags = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure",
+	"COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript",
+	"Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme" ];
+
+$('#text')
+	.keyboard({ layout: 'qwerty' })
+	.autocomplete({
+		source: availableTags
+	})
+	// position options added after v1.23.4
+	.addAutocomplete({
+		position : {
+			of : null,        // when null, element will default to kb.$keyboard
+			my : 'right top', // 'center top', (position under keyboard)
+			at : 'left top',  // 'center bottom',
+			collision: 'flip'
+		}
+	})
+	.addTyping();</pre>
+		</div>
+	</div>
+	<div class="block" style="width:800px; margin:0 auto;">
+		<h1>Log In </h1>
+		<h2>
+			<form>
+			<span>Login Type</span><br/>
+			<select>
+			  <option value="volvo">Customer</option>
+			  <option value="saab">Employee</option>
+			  <option value="opel">Manager</option>
+			</select><br/>
+			<span> Username </span><br/>
+			<input id="username" ><br/>
+			<span class="tooltip-tipsy" title="Click, then scroll down to see this code">Password</span>
+			<img id="password-opener" class="tooltip-tipsy" title="Click to open the virtual keyboard" src="css/images/keyboard.svg">
+		</h2>
+		<input id="password" type="password"><br/>
+		<div class="code ui-corner-all">
+			<h4>HTML</h4>
+			<pre class="prettyprint lang-html">&lt;img id="passwd" class="tooltip-tipsy" title="Click to open the virtual keyboard" src="css/images/keyboard.svg"&gt;
+&lt;input id="password" type="password"&gt;</pre>
+			<h4>Script</h4>
+			<pre class="prettyprint lang-js">$('#password')
+	.keyboard({
+		openOn : null,
+		stayOpen : true,
+		layout : 'qwerty'
+	})
+	.addTyping();
+
+$('#password-opener').click(function(){
+	var kb = $('#password').getkeyboard();
+	// close the keyboard if the keyboard is visible and the button is clicked a second time
+	if ( kb.isOpen ) {
+		kb.close();
+	} else {
+		kb.reveal();
+	}
+});</pre>
+		</div><br/>
+	 <button type="submit">Submit</button> 
+	 </form>
+	</div>
+</body></html>
